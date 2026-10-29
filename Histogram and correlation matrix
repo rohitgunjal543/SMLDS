@@ -1,0 +1,45 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+
+data = pd.read_csv(r"C:\Users\Varalakshmi\Downloads\customer_data.csv")
+
+
+
+print(data.head())
+
+
+
+data.hist(figsize=(10,8), bins=20)
+
+
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+# Example: histogram of one column
+sns.histplot(data['Age'], kde=True, bins=20)
+plt.show()
+
+
+
+print(data.columns)
+
+
+
+
+# Select only numeric columns automatically
+numeric_data = data.select_dtypes(include='number')
+
+# Compute correlation matrix
+corr = numeric_data.corr()
+print("Correlation Matrix:\n", corr)
+
+# Plot heatmap
+plt.figure(figsize=(10,6))
+sns.heatmap(corr, annot=True, cmap='coolwarm', linewidths=0.5)
+plt.title("Correlation Matrix Heatmap (Numeric Columns)")
+plt.show()
+
+
